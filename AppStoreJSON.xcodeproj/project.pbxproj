@@ -13,6 +13,7 @@
 		CEA90C6929C9E7CF00C0E2D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA90C6729C9E7CF00C0E2D3 /* Main.storyboard */; };
 		CEA90C6B29C9E7D000C0E2D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA90C6A29C9E7D000C0E2D3 /* Assets.xcassets */; };
 		CEA90C6E29C9E7D000C0E2D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA90C6C29C9E7D000C0E2D3 /* LaunchScreen.storyboard */; };
+		CEA90C7629C9EC3200C0E2D3 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CEA90C6A29C9E7D000C0E2D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEA90C6D29C9E7D000C0E2D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEA90C6F29C9E7D000C0E2D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +59,11 @@
 			isa = PBXGroup;
 			children = (
 				CEA90C6129C9E7CF00C0E2D3 /* AppDelegate.swift */,
-				CEA90C6329C9E7CF00C0E2D3 /* SceneDelegate.swift */,
 				CEA90C6529C9E7CF00C0E2D3 /* ViewController.swift */,
 				CEA90C6729C9E7CF00C0E2D3 /* Main.storyboard */,
 				CEA90C6A29C9E7D000C0E2D3 /* Assets.xcassets */,
+				CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */,
+				CEA90C6329C9E7CF00C0E2D3 /* SceneDelegate.swift */,
 				CEA90C6C29C9E7D000C0E2D3 /* LaunchScreen.storyboard */,
 				CEA90C6F29C9E7D000C0E2D3 /* Info.plist */,
 			);
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA90C7629C9EC3200C0E2D3 /* BaseTabBarController.swift in Sources */,
 				CEA90C6629C9E7CF00C0E2D3 /* ViewController.swift in Sources */,
 				CEA90C6229C9E7CF00C0E2D3 /* AppDelegate.swift in Sources */,
 				CEA90C6429C9E7CF00C0E2D3 /* SceneDelegate.swift in Sources */,
