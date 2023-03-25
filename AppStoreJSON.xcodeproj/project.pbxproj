@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE09DA3D29CF6272001EB4FE /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE09DA3C29CF6272001EB4FE /* AppsSearchController.swift */; };
 		CEA90C6229C9E7CF00C0E2D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA90C6129C9E7CF00C0E2D3 /* AppDelegate.swift */; };
 		CEA90C6429C9E7CF00C0E2D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA90C6329C9E7CF00C0E2D3 /* SceneDelegate.swift */; };
 		CEA90C6629C9E7CF00C0E2D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA90C6529C9E7CF00C0E2D3 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE09DA3C29CF6272001EB4FE /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
 		CEA90C5E29C9E7CF00C0E2D3 /* AppStoreJSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreJSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA90C6129C9E7CF00C0E2D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA90C6329C9E7CF00C0E2D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE09DA3B29CF61B4001EB4FE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */,
+				CE09DA3C29CF6272001EB4FE /* AppsSearchController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		CEA90C5529C9E7CF00C0E2D3 = {
 			isa = PBXGroup;
 			children = (
@@ -58,11 +69,11 @@
 		CEA90C6029C9E7CF00C0E2D3 /* AppStoreJSON */ = {
 			isa = PBXGroup;
 			children = (
+				CE09DA3B29CF61B4001EB4FE /* Controllers */,
 				CEA90C6129C9E7CF00C0E2D3 /* AppDelegate.swift */,
 				CEA90C6529C9E7CF00C0E2D3 /* ViewController.swift */,
 				CEA90C6729C9E7CF00C0E2D3 /* Main.storyboard */,
 				CEA90C6A29C9E7D000C0E2D3 /* Assets.xcassets */,
-				CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */,
 				CEA90C6329C9E7CF00C0E2D3 /* SceneDelegate.swift */,
 				CEA90C6C29C9E7D000C0E2D3 /* LaunchScreen.storyboard */,
 				CEA90C6F29C9E7D000C0E2D3 /* Info.plist */,
@@ -144,6 +155,7 @@
 				CEA90C7629C9EC3200C0E2D3 /* BaseTabBarController.swift in Sources */,
 				CEA90C6629C9E7CF00C0E2D3 /* ViewController.swift in Sources */,
 				CEA90C6229C9E7CF00C0E2D3 /* AppDelegate.swift in Sources */,
+				CE09DA3D29CF6272001EB4FE /* AppsSearchController.swift in Sources */,
 				CEA90C6429C9E7CF00C0E2D3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
