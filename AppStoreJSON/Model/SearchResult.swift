@@ -15,4 +15,6 @@ struct SearchResult: Decodable {
 struct Result: Decodable {
     let trackName: String
     let primaryGenreName: String
+    //float? потому что не у всех приложений может быть оценка. Почему var - пока не понял.
+    var averageUserRating: Float?
 }

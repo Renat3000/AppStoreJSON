@@ -16,37 +16,29 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         
         collectionView.backgroundColor = .white
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
-    fetchITunesApps()
+        fetchITunesApps()
         
     }
     
+    fileprivate var appResults = [Result]()
+    
     fileprivate func fetchITunesApps () {
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
-            // fetch data from internet
-        guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { data, resp, err in
+        
+        Service.shared.fetchApps { (results, err) in
             
             if let err = err {
-                print("failed to fetch apps:", err)
+                print("Failed fetching apps:", err)
                 return
             }
-            // success
-//            print(String(data: data!, encoding: .utf8))
-            
-            guard let data = data else { return }
-            
-            do {
-                let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
-//                print(searchResult)
-                
-                searchResult.results.forEach({print($0.trackName, $0.primaryGenreName)})
-                
-            } catch let jsonErr {
-                print("Failed to decode json:", jsonErr)
+//          self.appResults = searchResult.results
+//          searchResult.results.forEach({print($0.trackName, $0.primaryGenreName)})
+            self.appResults = results
+//          UICollectionView.reloadData() must be used from main thread only, поэтому используем функцию ниже
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
-            
-            
-        }.resume() // fires off the request 
+        }
+//        print("Finished fetching apps from controller")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -54,12 +46,18 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+//      заменили int на appResults. Мы же можем их посчитать через count
+        return appResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
-        cell.nameLabel.text = "Here is my app name"
+//        cell.nameLabel.text = "Here is my app name"
+//        можно indexPath.row но appleTeam рекомендует в UICollectionViewController использовать item. А в TableView уже .row
+        let appResult = appResults[indexPath.item]
+        cell.nameLabel.text = appResult.trackName
+        cell.categoryLabel.text = appResult.primaryGenreName
+        cell.ratingsLabel.text = "Rating: \(String(format:"%.2f", appResult.averageUserRating ?? 0))"
         return cell
     }
     

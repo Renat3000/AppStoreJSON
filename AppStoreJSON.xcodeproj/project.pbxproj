@@ -19,6 +19,7 @@
 		CEA90C6E29C9E7D000C0E2D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA90C6C29C9E7D000C0E2D3 /* LaunchScreen.storyboard */; };
 		CEA90C7629C9EC3200C0E2D3 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */; };
 		CEBEFEFB29D32C8700A14EB7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEFEFA29D32C8700A14EB7 /* SearchResult.swift */; };
+		CEE8CDF329D4661A00D2B223 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE8CDF229D4661A00D2B223 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CEA90C6F29C9E7D000C0E2D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		CEBEFEFA29D32C8700A14EB7 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		CEE8CDF229D4661A00D2B223 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,6 @@
 			children = (
 				CEA90C7529C9EC3200C0E2D3 /* BaseTabBarController.swift */,
 				CE09DA3C29CF6272001EB4FE /* AppsSearchController.swift */,
-				CEA90C6529C9E7CF00C0E2D3 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -95,12 +96,14 @@
 		CEA90C6029C9E7CF00C0E2D3 /* AppStoreJSON */ = {
 			isa = PBXGroup;
 			children = (
+				CEE8CDF129D4660200D2B223 /* Service */,
 				CEBEFEF929D32C6700A14EB7 /* Model */,
 				CE5264BA29D1B17300802C0C /* Helpers */,
 				CE09DA3B29CF61B4001EB4FE /* Controllers */,
 				CE7A470729D08DF900E1AE5F /* Views */,
 				CEA90C6729C9E7CF00C0E2D3 /* Main.storyboard */,
 				CEA90C6A29C9E7D000C0E2D3 /* Assets.xcassets */,
+				CEA90C6529C9E7CF00C0E2D3 /* ViewController.swift */,
 				CEA90C6129C9E7CF00C0E2D3 /* AppDelegate.swift */,
 				CEA90C6329C9E7CF00C0E2D3 /* SceneDelegate.swift */,
 				CEA90C6C29C9E7D000C0E2D3 /* LaunchScreen.storyboard */,
@@ -115,6 +118,14 @@
 				CEBEFEFA29D32C8700A14EB7 /* SearchResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CEE8CDF129D4660200D2B223 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CEE8CDF229D4661A00D2B223 /* Service.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +206,7 @@
 				CE09DA3D29CF6272001EB4FE /* AppsSearchController.swift in Sources */,
 				CE7A470929D08E6000E1AE5F /* SearchResultCell.swift in Sources */,
 				CE5264BE29D1C00600802C0C /* VerticalStackView.swift in Sources */,
+				CEE8CDF329D4661A00D2B223 /* Service.swift in Sources */,
 				CE5264BC29D1B3ED00802C0C /* UIView+Layout.swift in Sources */,
 				CEA90C6429C9E7CF00C0E2D3 /* SceneDelegate.swift in Sources */,
 			);
