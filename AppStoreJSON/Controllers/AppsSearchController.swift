@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -54,10 +55,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
 //        cell.nameLabel.text = "Here is my app name"
 //        можно indexPath.row но appleTeam рекомендует в UICollectionViewController использовать item. А в TableView уже .row
-        let appResult = appResults[indexPath.item]
-        cell.nameLabel.text = appResult.trackName
-        cell.categoryLabel.text = appResult.primaryGenreName
-        cell.ratingsLabel.text = "Rating: \(String(format:"%.2f", appResult.averageUserRating ?? 0))"
+        cell.appResult = appResults[indexPath.item]
         return cell
     }
     
