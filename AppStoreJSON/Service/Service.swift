@@ -10,11 +10,11 @@ import Foundation
 class Service {
     static let shared = Service() //singleton
     
-    func fetchApps(completion: @escaping ([Result], Error?) -> ()) {
+    func fetchApps(searchTerm: String, completion: @escaping ([Result], Error?) -> ()) {
         
 //        print("Fetching itunes apps from Service Layer")
         
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+        let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
             // fetch data from internet
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, resp, err in
