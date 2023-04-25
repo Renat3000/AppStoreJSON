@@ -21,9 +21,9 @@ class AppRowCell: UICollectionViewCell {
         
         imageView.backgroundColor = .purple
 //        imageView.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        imageView.constrainWidth(constant: 64)
+        imageView.constrainWidth(constant: 55)
         //обязательно нужно дать высоту, а то иначе пропадает 🤨
-        imageView.constrainHeight(constant: 64)
+        imageView.constrainHeight(constant: 55)
         
         getButton.backgroundColor = UIColor(white: 0.95, alpha: 1)
         getButton.constrainWidth(constant: 80)

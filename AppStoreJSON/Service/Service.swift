@@ -25,7 +25,6 @@ class Service {
                 return
             }
             // success
-//            print(String(data: data!, encoding: .utf8))
             
             guard let data = data else { return }
             
@@ -41,5 +40,37 @@ class Service {
             
             
         }.resume() // fires off the request
+    }
+    
+    func fetchTopFree(completion: @escaping (AppGroup?, Error?) -> ()) {
+        let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json"
+        fetchAppGroup(urlString: urlString, completion: completion)
+    }
+    
+    func fetchTopPaid(completion: @escaping (AppGroup?, Error?) -> ()) {
+        let urlString = "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/50/apps.json"
+        fetchAppGroup(urlString: urlString, completion: completion)
+    }
+    
+    //helper
+    func fetchAppGroup(urlString: String, completion: @escaping (AppGroup?, Error?) -> Void) {
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, resp, err) in
+            
+            if let err = err {
+                completion(nil, err)
+                return
+            }
+            
+            do { let appGroup = try JSONDecoder().decode(AppGroup.self, from: data!)
+//                appGroup.feed.results.forEach({print($0.name)})
+                completion(appGroup, nil)
+            } catch {
+                completion(nil, error)
+                print("Failed to decode:", error)
+            }
+            
+        }.resume()
     }
 }
