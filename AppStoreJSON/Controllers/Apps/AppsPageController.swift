@@ -12,20 +12,32 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     let cellId = "id"
     let headerId = "headerId"
     
+    //анимация загрузки (throbber)
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: .large)
+        aiv.color = .black
+        aiv.startAnimating()
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
-        //вводим заголовок 1
+        //вводим заголовок (Header) 1
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         //----
+        //добавили анимацию загрузки на экран
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.fillSuperview()
         fetchData()
     }
     
 //    var editorsChoiceGames: AppGroup?
     var groups = [AppGroup]()
-
+    var socialApps = [SocialApp]()
     fileprivate func fetchData() {
 
         var group1: AppGroup?
@@ -52,10 +64,19 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
             dispatchGroup.leave()
             group3 = appGroup
         }
+        dispatchGroup.enter()
+        Service.shared.fetchSocialApps { (apps, err) in
+            // you should check the err
+//            apps?.forEach({print($0.name)})
+            self.socialApps = apps ?? []
+            dispatchGroup.leave()
+        }
         
         //completion
         dispatchGroup.notify(queue: .main) {
             print("completed dispatch group task")
+            //вырубаем анимацию загрузки
+            self.activityIndicatorView.stopAnimating()
             
             if let group = group1 {
                 self.groups.append(group)
@@ -69,14 +90,15 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
             self.collectionView.reloadData()
         }
     }
-        
-    //вводим заголовок 2
+    //вводим заголовок (Header) 2
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppsPageHeader
+        header.appHeaderHorizontalController.socialApps = self.socialApps
+        header.appHeaderHorizontalController.collectionView.reloadData()
         return header
     }
     
-    //вводим заголовок 3
+    //вводим заголовок (Header) 3
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: view.frame.width, height: 300)
     }
