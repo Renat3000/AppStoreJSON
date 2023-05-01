@@ -47,7 +47,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             Service.shared.fetchApps(searchTerm: searchText) { res, err in
-                self.appResults = res
+                self.appResults = res?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -60,7 +60,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     
     fileprivate func fetchITunesApps () {
         
-        Service.shared.fetchApps(searchTerm: "twitter") { (results, err) in
+        Service.shared.fetchApps(searchTerm: "twitter") { (res, err) in
             
             if let err = err {
                 print("Failed fetching apps:", err)
@@ -68,7 +68,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
             }
 //          self.appResults = searchResult.results
 //          searchResult.results.forEach({print($0.trackName, $0.primaryGenreName)})
-            self.appResults = results
+            self.appResults = res?.results ?? []
 //          UICollectionView.reloadData() must be used from main thread only, поэтому используем функцию ниже
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
