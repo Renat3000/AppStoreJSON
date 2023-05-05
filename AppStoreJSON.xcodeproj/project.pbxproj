@@ -30,6 +30,7 @@
 		CEACD11A29F2F5D30026B65D /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACD11929F2F5D30026B65D /* AppsPageHeader.swift */; };
 		CEACD11C29F2FC510026B65D /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACD11B29F2FC510026B65D /* AppsHeaderHorizontalController.swift */; };
 		CEACD11E29F3098A0026B65D /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACD11D29F3098A0026B65D /* AppsHeaderCell.swift */; };
+		CEB8026D2A0537630046E8C1 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8026C2A0537630046E8C1 /* AppDetailCell.swift */; };
 		CEBEFEFB29D32C8700A14EB7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEFEFA29D32C8700A14EB7 /* SearchResult.swift */; };
 		CECAEB8C2A01228E00FB0C83 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECAEB8B2A01228E00FB0C83 /* BetterSnappingLayout.swift */; };
 		CEE787112A02989F0028EBFF /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE787102A02989F0028EBFF /* AppDetailController.swift */; };
@@ -64,6 +65,7 @@
 		CEACD11929F2F5D30026B65D /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		CEACD11B29F2FC510026B65D /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		CEACD11D29F3098A0026B65D /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
+		CEB8026C2A0537630046E8C1 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		CEBEFEFA29D32C8700A14EB7 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		CECAEB8B2A01228E00FB0C83 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
 		CEE787102A02989F0028EBFF /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		CE46797029EAF95E000347CF /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				CEB8026B2A05374E0046E8C1 /* Details */,
 				CE46797129EAF9AD000347CF /* AppsGroupCell.swift */,
 				CE9EB79E29F018C20082E0B7 /* AppRowCell.swift */,
 				CEACD11D29F3098A0026B65D /* AppsHeaderCell.swift */,
@@ -190,6 +193,14 @@
 				CEA90C6F29C9E7D000C0E2D3 /* Info.plist */,
 			);
 			path = AppStoreJSON;
+			sourceTree = "<group>";
+		};
+		CEB8026B2A05374E0046E8C1 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				CEB8026C2A0537630046E8C1 /* AppDetailCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		CEBEFEF929D32C6700A14EB7 /* Model */ = {
@@ -353,6 +364,7 @@
 				CE5DB30B29F0769E00D66184 /* Extensions.swift in Sources */,
 				CE5264BC29D1B3ED00802C0C /* UIView+Layout.swift in Sources */,
 				CE1AE76C29F5816300755A89 /* AppGroup.swift in Sources */,
+				CEB8026D2A0537630046E8C1 /* AppDetailCell.swift in Sources */,
 				CEACD11E29F3098A0026B65D /* AppsHeaderCell.swift in Sources */,
 				CE46796F29EAF011000347CF /* BaseListController.swift in Sources */,
 				CEA90C6429C9E7CF00C0E2D3 /* SceneDelegate.swift in Sources */,
@@ -501,7 +513,6 @@
 			baseConfigurationReference = 4B5F65853E7D5E5107F7452A /* Pods-AppStoreJSON.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7TK6TBB3FW;
@@ -530,7 +541,6 @@
 			baseConfigurationReference = BD79C4E60EAB7A09D139F00D /* Pods-AppStoreJSON.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7TK6TBB3FW;

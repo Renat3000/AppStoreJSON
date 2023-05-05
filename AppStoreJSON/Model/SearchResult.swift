@@ -22,4 +22,9 @@ struct Result: Decodable {
     // ава
     let artworkUrl100: String
 //    artworkUrl512 - здоровая ава
+    //добавили параметры ниже чтобы парсить информацию для viewController конечного приложения
+    let formattedPrice: String
+    let description: String
+    let releaseNotes: String
+//    let supportedDevices: String
 }
