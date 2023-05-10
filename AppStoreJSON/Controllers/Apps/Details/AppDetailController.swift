@@ -22,11 +22,32 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
                 // .first потому что должны взять первый результат из поиска (и хоупфулли - единственный)
 //                print(result?.results.first?.releaseNotes ?? "shiiiet turn on vpn")
             }
+            
+            let reviewsUrl = "https://itunes.apple.com/us/rss/customerreviews/id=\(appId ?? "")/sortby=mostrecent/json"
+//            print(reviewsUrl)
+            Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, err) in
+                
+                if let err = err {
+                    print("Failed to decode reviews:", err)
+                    return
+                }
+                
+                self.reviews = reviews
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                
+//                reviews?.feed.entry.forEach({ (entry) in
+//                    print(entry.title.label, entry.author.name.label, entry.content.label)
+//                })
+                
+            }
         }
     }
 //let's make app a global variable
     var app: Result?
-    
+    var reviews: Reviews?
+        
     let detailCellId = "detailCellId"
     let previewCellId = "previewCellId"
     let reviewCellId = "reviewCellId"
@@ -62,7 +83,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewCellId, for: indexPath) as! ReviewRowCell
-
+            cell.reviewsController.reviews = self.reviews
             return cell
         }
         
