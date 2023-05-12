@@ -11,8 +11,24 @@ class ReviewCell: UICollectionViewCell {
     
     let titleLabel = UILabel(text: "Review Label", font: .boldSystemFont(ofSize: 18))
     let authorLabel = UILabel(text: "Author", font: .systemFont(ofSize: 18))
-    let starsLabel = UILabel(text: "★", font: .systemFont(ofSize: 14))
-    let bodyLabel = UILabel(text: "Body text\nAnd Body text\nAnd Body text", font: .systemFont(ofSize: 16), numberOfLines: 0)
+//    let starsLabel = UILabel(text: "★", font: .systemFont(ofSize: 14))
+    let starsStackView: UIStackView = {
+        var arrangedSubViews = [UIView]()
+        (0..<5).forEach ({ (_) in
+            let starLabel = UILabel(text: "★", font: .systemFont(ofSize: 18))
+            
+            starLabel.textColor = .orange
+            starLabel.constrainWidth(constant: 24)
+            starLabel.constrainHeight(constant: 24)
+            arrangedSubViews.append(starLabel)
+        })
+
+        arrangedSubViews.append(UIView())
+        let stackView = UIStackView(arrangedSubviews: arrangedSubViews, customSpacing: -5)
+        return stackView
+    }()
+    
+    let bodyLabel = UILabel(text: "Body text\nAnd Body text\nAnd Body text", font: .systemFont(ofSize: 16), numberOfLines: 5)
 //  https://itunes.apple.com/us/rss/customerreviews/id=389801252/json
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -23,7 +39,8 @@ class ReviewCell: UICollectionViewCell {
         
         let stackView = VerticalStackView(arrangedSubViews: [
             UIStackView(arrangedSubviews: [titleLabel, authorLabel], customSpacing: 8),
-            starsLabel,
+//            starsLabel,
+            starsStackView,
             bodyLabel
         ], spacing: 12)
         
@@ -31,7 +48,8 @@ class ReviewCell: UICollectionViewCell {
         titleLabel.setContentCompressionResistancePriority(.init(0), for: .horizontal)
         authorLabel.textAlignment = .right
         addSubview(stackView)
-        stackView.fillSuperview(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+//        stackView.fillSuperview(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 20, left: 20, bottom: 0, right: 20))
     }
     
     required init?(coder: NSCoder) {

@@ -61,7 +61,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         navigationItem.largeTitleDisplayMode = .never
     
     }
-    
+     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //поменяли на 2 тк теперь 2 ячейки
         //поменяли на 3 тк теперь 3 ячейки (+отзывы)
@@ -120,6 +120,8 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         return .init(width: view.frame.width, height: height)
 
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 0, bottom: 16, right: 0)
+    }
     
 }
