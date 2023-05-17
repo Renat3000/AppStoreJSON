@@ -9,41 +9,19 @@ import UIKit
 
 class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayout {
     
-    var appId: String! {
-        didSet {
-//            print("here's my appId", appId as Any)
-            let urlString = "https://itunes.apple.com/lookup?id=\(appId ?? "")"
-            Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
-                let app = result?.results.first
-                self.app = app
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                // .first потому что должны взять первый результат из поиска (и хоупфулли - единственный)
-//                print(result?.results.first?.releaseNotes ?? "shiiiet turn on vpn")
-            }
-            
-            let reviewsUrl = "https://itunes.apple.com/us/rss/customerreviews/id=\(appId ?? "")/sortby=mostrecent/json"
-//            print(reviewsUrl)
-            Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, err) in
-                
-                if let err = err {
-                    print("Failed to decode reviews:", err)
-                    return
-                }
-                
-                self.reviews = reviews
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
-//                reviews?.feed.entry.forEach({ (entry) in
-//                    print(entry.title.label, entry.author.name.label, entry.content.label)
-//                })
-                
-            }
-        }
+    // теперь AppDetailController нужно инициализировать вот так AppDetailController(appId: appId):
+    fileprivate let appId: String
+    
+    //dependency injection constructor
+    init(appId: String) {
+        self.appId = appId
+        super.init()
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 //let's make app a global variable
     var app: Result?
     var reviews: Reviews?
@@ -59,9 +37,43 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         collectionView.register(ReviewRowCell.self, forCellWithReuseIdentifier: reviewCellId)
         //чтобы не показывать шапку в капсе
         navigationItem.largeTitleDisplayMode = .never
+        fetchData()
     
     }
-     
+    
+    fileprivate func fetchData() {
+        let urlString = "https://itunes.apple.com/lookup?id=\(appId)"
+        Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
+            let app = result?.results.first
+            self.app = app
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            // .first потому что должны взять первый результат из поиска (и хоупфулли - единственный)
+//                print(result?.results.first?.releaseNotes ?? "shiiiet turn on vpn")
+        }
+        
+        let reviewsUrl = "https://itunes.apple.com/us/rss/customerreviews/id=\(appId)/sortby=mostrecent/json"
+//            print(reviewsUrl)
+        Service.shared.fetchGenericJSONData(urlString: reviewsUrl) { (reviews: Reviews?, err) in
+            
+            if let err = err {
+                print("Failed to decode reviews:", err)
+                return
+            }
+            
+            self.reviews = reviews
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
+//                reviews?.feed.entry.forEach({ (entry) in
+//                    print(entry.title.label, entry.author.name.label, entry.content.label)
+//                })
+            
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //поменяли на 2 тк теперь 2 ячейки
         //поменяли на 3 тк теперь 3 ячейки (+отзывы)

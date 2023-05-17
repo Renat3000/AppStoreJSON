@@ -28,7 +28,7 @@ class ReviewCell: UICollectionViewCell {
         return stackView
     }()
     
-    let bodyLabel = UILabel(text: "Body text\nAnd Body text\nAnd Body text", font: .systemFont(ofSize: 16), numberOfLines: 5)
+    let bodyLabel = UILabel(text: "Body text\nAnd Body text\nAnd Body text", font: .systemFont(ofSize: 16), numberOfLines: 4)
 //  https://itunes.apple.com/us/rss/customerreviews/id=389801252/json
     override init(frame: CGRect) {
         super .init(frame: frame)

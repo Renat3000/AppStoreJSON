@@ -13,6 +13,7 @@ struct SearchResult: Decodable {
 }
 
 struct Result: Decodable {
+    let trackId: Int
     let trackName: String
     let primaryGenreName: String
     //float? потому что не у всех приложений может быть оценка. Почему var - пока не понял.
@@ -23,8 +24,8 @@ struct Result: Decodable {
     let artworkUrl100: String
 //    artworkUrl512 - здоровая ава
     //добавили параметры ниже чтобы парсить информацию для viewController конечного приложения
-    let formattedPrice: String
+    var formattedPrice: String?
     let description: String
-    let releaseNotes: String
+    var releaseNotes: String?
 //    let supportedDevices: String
 }

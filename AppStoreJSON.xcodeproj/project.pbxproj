@@ -132,9 +132,9 @@
 			children = (
 				CEE7870F2A0298910028EBFF /* Details */,
 				CE46796C29EAE413000347CF /* AppsPageController.swift */,
-				CEACD11B29F2FC510026B65D /* AppsHeaderHorizontalController.swift */,
 				CEFE08FE29ED993600B72DF4 /* AppsHorizontalController.swift */,
 				CEACD11929F2F5D30026B65D /* AppsPageHeader.swift */,
+				CEACD11B29F2FC510026B65D /* AppsHeaderHorizontalController.swift */,
 			);
 			path = Apps;
 			sourceTree = "<group>";
